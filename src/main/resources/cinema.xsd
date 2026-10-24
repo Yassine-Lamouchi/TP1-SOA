@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <!-- Type pour les identifiants (pattern Fxx, Sxx, Cxx, etc.) -->
+    <xs:simpleType name="IdType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{1,2}[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour la devise monétaire -->
+    <xs:simpleType name="DeviseType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TND"/>
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="USD"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour le code pays / nationalité (ISO 3166-1 alpha-2) -->
+    <xs:simpleType name="NationaliteType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour la note d'un film (0.0 à 10.0) -->
+    <xs:simpleType name="NoteType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0.0"/>
+            <xs:maxInclusive value="10.0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour la durée en minutes (positif) -->
+    <xs:simpleType name="DureeType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:maxInclusive value="600"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour la langue (code ISO 639-1) -->
+    <xs:simpleType name="LangueType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour le statut d'une séance -->
+    <xs:simpleType name="StatutSeanceType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="active"/>
+            <xs:enumeration value="complete"/>
+            <xs:enumeration value="annulee"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour le statut d'une réservation -->
+    <xs:simpleType name="StatutReservationType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="confirmee"/>
+            <xs:enumeration value="en_attente"/>
+            <xs:enumeration value="annulee"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour le type d'abonnement client -->
+    <xs:simpleType name="AbonnementType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Standard"/>
+            <xs:enumeration value="Premium"/>
+            <xs:enumeration value="Étudiant"/>
+            <xs:enumeration value="Senior"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour le type de salle -->
+    <xs:simpleType name="TypeSalleType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Standard"/>
+            <xs:enumeration value="3D"/>
+            <xs:enumeration value="IMAX"/>
+            <xs:enumeration value="VIP"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type pour un montant avec devise -->
+    <xs:complexType name="MontantType">
+        <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+                <xs:attribute name="devise" type="DeviseType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- Type pour une adresse -->
+    <xs:complexType name="AdresseType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="ville" type="xs:string" use="required"/>
+                <xs:attribute name="codePostal" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- ======================== TYPE ACTEUR ======================== -->
+    <xs:complexType name="ActeurType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="role" type="xs:string" use="required"/>
+                <xs:attribute name="nationalite" type="NationaliteType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- ======================== TYPE RÉALISATEUR ======================== -->
+    <xs:complexType name="RealisateurType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="nationalite" type="NationaliteType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- ======================== TYPE FILM ======================== -->
+    <xs:complexType name="FilmType">
+        <xs:sequence>
+            <xs:element name="titre" type="xs:string"/>
+            <xs:element name="realisateur" type="RealisateurType"/>
+            <xs:element name="genre" type="xs:string"/>
+            <xs:element name="annee" type="xs:gYear"/>
+            <xs:element name="prix" type="MontantType"/>
+            <xs:element name="synopsis" type="xs:string"/>
+            <xs:element name="acteurs">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="acteur" type="ActeurType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdType" use="required"/>
+        <xs:attribute name="promotion" type="xs:boolean" use="required"/>
+        <xs:attribute name="langue" type="LangueType" use="required"/>
+        <xs:attribute name="duree" type="DureeType" use="required"/>
+        <xs:attribute name="note" type="NoteType" use="required"/>
+    </xs:complexType>
+
+    <!-- ======================== TYPE SALLE ======================== -->
+    <xs:complexType name="SalleType">
+        <xs:sequence>
+            <xs:element name="nomSalle" type="xs:string"/>
+            <xs:element name="capacite" type="xs:positiveInteger"/>
+            <xs:element name="equipements">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="equipement" type="xs:string" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdType" use="required"/>
+        <xs:attribute name="type" type="TypeSalleType" use="required"/>
+        <xs:attribute name="climatisee" type="xs:boolean" use="required"/>
+    </xs:complexType>
+
+    <!-- ======================== TYPE CLIENT ======================== -->
+    <xs:complexType name="ClientType">
+        <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="telephone" type="xs:string"/>
+            <xs:element name="adresse" type="AdresseType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdType" use="required"/>
+        <xs:attribute name="actif" type="xs:boolean" use="required"/>
+        <xs:attribute name="typeAbonnement" type="AbonnementType" use="required"/>
+        <xs:attribute name="dateInscription" type="xs:date" use="required"/>
+    </xs:complexType>
+
+    <!-- ======================== TYPE SÉANCE ======================== -->
+    <xs:complexType name="SeanceType">
+        <xs:sequence>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="heure" type="xs:time"/>
+            <xs:element name="prixSeance" type="MontantType"/>
+            <xs:element name="placesDisponibles" type="xs:nonNegativeInteger"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdType" use="required"/>
+        <xs:attribute name="filmRef" type="IdType" use="required"/>
+        <xs:attribute name="salleRef" type="IdType" use="required"/>
+        <xs:attribute name="statut" type="StatutSeanceType" use="required"/>
+    </xs:complexType>
+
+    <!-- ======================== TYPE RÉSERVATION ======================== -->
+    <xs:complexType name="ReservationType">
+        <xs:sequence>
+            <xs:element name="dateReservation" type="xs:date"/>
+            <xs:element name="nombrePlaces" type="xs:positiveInteger"/>
+            <xs:element name="montantTotal" type="MontantType"/>
+            <xs:element name="methodePaiement" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="IdType" use="required"/>
+        <xs:attribute name="clientRef" type="IdType" use="required"/>
+        <xs:attribute name="seanceRef" type="IdType" use="required"/>
+        <xs:attribute name="statut" type="StatutReservationType" use="required"/>
+    </xs:complexType>
+
+    <!-- ======================== ÉLÉMENT RACINE ======================== -->
+    <xs:element name="cinema">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Liste des films -->
+                <xs:element name="films">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="film" type="FilmType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <!-- Liste des salles -->
+                <xs:element name="salles">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="salle" type="SalleType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <!-- Liste des clients -->
+                <xs:element name="clients">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="client" type="ClientType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <!-- Liste des séances -->
+                <xs:element name="seances">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="seance" type="SeanceType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <!-- Liste des réservations -->
+                <xs:element name="reservations">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="reservation" type="ReservationType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+
+            <!-- Attributs de l'élément racine cinema -->
+            <xs:attribute name="nom" type="xs:string" use="required"/>
+            <xs:attribute name="ville" type="xs:string" use="required"/>
+            <xs:attribute name="pays" type="xs:string" use="required"/>
+            <xs:attribute name="dateOuverture" type="xs:date" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

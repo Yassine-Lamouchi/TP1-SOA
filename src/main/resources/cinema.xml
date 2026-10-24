@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cinema nom="CinéStar Sfax" ville="Sfax" pays="Tunisie" dateOuverture="2015-03-20">
+
+    <!-- ======================== FILMS ======================== -->
+    <films>
+        <film id="F1" promotion="true" langue="en" duree="148" note="8.8">
+            <titre>Inception</titre>
+            <realisateur nationalite="GB">Christopher Nolan</realisateur>
+            <genre>Science-fiction</genre>
+            <annee>2010</annee>
+            <prix devise="TND">12.5</prix>
+            <synopsis>Un voleur spécialisé dans l'extraction de secrets via les rêves se voit offrir une chance de retrouver sa vie d'avant.</synopsis>
+            <acteurs>
+                <acteur role="Dom Cobb" nationalite="US">Leonardo DiCaprio</acteur>
+                <acteur role="Arthur" nationalite="US">Joseph Gordon-Levitt</acteur>
+                <acteur role="Mal" nationalite="FR">Marion Cotillard</acteur>
+            </acteurs>
+        </film>
+
+        <film id="F2" promotion="false" langue="en" duree="175" note="9.2">
+            <titre>Le Parrain</titre>
+            <realisateur nationalite="US">Francis Ford Coppola</realisateur>
+            <genre>Drame</genre>
+            <annee>1972</annee>
+            <prix devise="TND">10.0</prix>
+            <synopsis>L'histoire de la famille Corleone, une puissante dynastie du crime organisé à New York.</synopsis>
+            <acteurs>
+                <acteur role="Michael Corleone" nationalite="US">Al Pacino</acteur>
+                <acteur role="Vito Corleone" nationalite="US">Marlon Brando</acteur>
+                <acteur role="Sonny Corleone" nationalite="US">James Caan</acteur>
+            </acteurs>
+        </film>
+
+        <film id="F3" promotion="true" langue="en" duree="169" note="8.6">
+            <titre>Interstellar</titre>
+            <realisateur nationalite="GB">Christopher Nolan</realisateur>
+            <genre>Science-fiction</genre>
+            <annee>2014</annee>
+            <prix devise="TND">13.0</prix>
+            <synopsis>Une équipe d'explorateurs voyage à travers un trou de ver dans l'espace pour assurer la survie de l'humanité.</synopsis>
+            <acteurs>
+                <acteur role="Cooper" nationalite="US">Matthew McConaughey</acteur>
+                <acteur role="Dr. Brand" nationalite="GB">Anne Hathaway</acteur>
+                <acteur role="Murph" nationalite="US">Jessica Chastain</acteur>
+            </acteurs>
+        </film>
+
+        <film id="F4" promotion="false" langue="fr" duree="112" note="8.5">
+            <titre>Amélie</titre>
+            <realisateur nationalite="FR">Jean-Pierre Jeunet</realisateur>
+            <genre>Comédie romantique</genre>
+            <annee>2001</annee>
+            <prix devise="TND">9.0</prix>
+            <synopsis>Amélie Poulain, serveuse dans un café de Montmartre, décide secrètement d'améliorer la vie des gens autour d'elle.</synopsis>
+            <acteurs>
+                <acteur role="Amélie Poulain" nationalite="FR">Audrey Tautou</acteur>
+                <acteur role="Nino Quincampoix" nationalite="FR">Mathieu Kassovitz</acteur>
+            </acteurs>
+        </film>
+
+        <film id="F5" promotion="true" langue="ar" duree="130" note="7.9">
+            <titre>باب الفلة</titre>
+            <realisateur nationalite="TN">مؤنس خمار</realisateur>
+            <genre>Drame</genre>
+            <annee>2017</annee>
+            <prix devise="TND">8.0</prix>
+            <synopsis>Un drame tunisien explorant les défis sociaux dans la Tunisie contemporaine.</synopsis>
+            <acteurs>
+                <acteur role="Protagoniste" nationalite="TN">لطفي العبدلي</acteur>
+            </acteurs>
+        </film>
+    </films>
+
+    <!-- ======================== SALLES ======================== -->
+    <salles>
+        <salle id="S1" type="IMAX" climatisee="true">
+            <nomSalle>Salle Carthage</nomSalle>
+            <capacite>300</capacite>
+            <equipements>
+                <equipement>Son Dolby Atmos</equipement>
+                <equipement>Écran géant IMAX</equipement>
+                <equipement>Sièges inclinables</equipement>
+            </equipements>
+        </salle>
+
+        <salle id="S2" type="3D" climatisee="true">
+            <nomSalle>Salle Hannibal</nomSalle>
+            <capacite>200</capacite>
+            <equipements>
+                <equipement>Projection 3D</equipement>
+                <equipement>Son Surround 7.1</equipement>
+            </equipements>
+        </salle>
+
+        <salle id="S3" type="Standard" climatisee="false">
+            <nomSalle>Salle Elissa</nomSalle>
+            <capacite>150</capacite>
+            <equipements>
+                <equipement>Projection numérique HD</equipement>
+                <equipement>Son stéréo</equipement>
+            </equipements>
+        </salle>
+
+        <salle id="S4" type="VIP" climatisee="true">
+            <nomSalle>Salle Dido</nomSalle>
+            <capacite>50</capacite>
+            <equipements>
+                <equipement>Fauteuils en cuir</equipement>
+                <equipement>Service restauration</equipement>
+                <equipement>Son Dolby Atmos</equipement>
+                <equipement>Écran 4K Laser</equipement>
+            </equipements>
+        </salle>
+    </salles>
+
+    <!-- ======================== CLIENTS ======================== -->
+    <clients>
+        <client id="C1" actif="true" typeAbonnement="Premium" dateInscription="2020-01-15">
+            <nom>Amel</nom>
+            <prenom>Ben Ali</prenom>
+            <email>amel@example.com</email>
+            <telephone>+216 20 123 456</telephone>
+            <adresse ville="Sfax" codePostal="3000">Rue Habib Bourguiba, Sfax</adresse>
+        </client>
+
+        <client id="C2" actif="false" typeAbonnement="Standard" dateInscription="2019-06-20">
+            <nom>Hela</nom>
+            <prenom>Trabelsi</prenom>
+            <email>hela@example.com</email>
+            <telephone>+216 25 789 012</telephone>
+            <adresse ville="Tunis" codePostal="1000">Avenue Mohamed V, Tunis</adresse>
+        </client>
+
+        <client id="C3" actif="true" typeAbonnement="Premium" dateInscription="2021-03-10">
+            <nom>Rim</nom>
+            <prenom>Gharbi</prenom>
+            <email>rim@example.com</email>
+            <telephone>+216 22 345 678</telephone>
+            <adresse ville="Sfax" codePostal="3000">Avenue de la Liberté, Sfax</adresse>
+        </client>
+
+        <client id="C4" actif="true" typeAbonnement="Étudiant" dateInscription="2023-09-01">
+            <nom>Mohamed</nom>
+            <prenom>Kammoun</prenom>
+            <email>mohamed.k@example.com</email>
+            <telephone>+216 28 901 234</telephone>
+            <adresse ville="Sfax" codePostal="3018">Cité Universitaire, Route de Tunis</adresse>
+        </client>
+
+        <client id="C5" actif="true" typeAbonnement="Standard" dateInscription="2022-11-05">
+            <nom>Fatma</nom>
+            <prenom>Masmoudi</prenom>
+            <email>fatma.m@example.com</email>
+            <telephone>+216 23 567 890</telephone>
+            <adresse ville="Gabès" codePostal="6000">Rue Ibn Khaldoun, Gabès</adresse>
+        </client>
+    </clients>
+
+    <!-- ======================== SÉANCES ======================== -->
+    <seances>
+        <seance id="SE1" filmRef="F1" salleRef="S1" statut="active">
+            <date>2025-04-10</date>
+            <heure>20:30:00</heure>
+            <prixSeance devise="TND">15.0</prixSeance>
+            <placesDisponibles>245</placesDisponibles>
+        </seance>
+
+        <seance id="SE2" filmRef="F2" salleRef="S3" statut="active">
+            <date>2025-04-10</date>
+            <heure>18:00:00</heure>
+            <prixSeance devise="TND">10.0</prixSeance>
+            <placesDisponibles>120</placesDisponibles>
+        </seance>
+
+        <seance id="SE3" filmRef="F3" salleRef="S2" statut="complete">
+            <date>2025-04-09</date>
+            <heure>21:00:00</heure>
+            <prixSeance devise="TND">14.0</prixSeance>
+            <placesDisponibles>0</placesDisponibles>
+        </seance>
+
+        <seance id="SE4" filmRef="F4" salleRef="S4" statut="active">
+            <date>2025-04-11</date>
+            <heure>17:00:00</heure>
+            <prixSeance devise="TND">20.0</prixSeance>
+            <placesDisponibles>35</placesDisponibles>
+        </seance>
+
+        <seance id="SE5" filmRef="F1" salleRef="S2" statut="annulee">
+            <date>2025-04-12</date>
+            <heure>14:00:00</heure>
+            <prixSeance devise="TND">12.0</prixSeance>
+            <placesDisponibles>200</placesDisponibles>
+        </seance>
+
+        <seance id="SE6" filmRef="F5" salleRef="S3" statut="active">
+            <date>2025-04-13</date>
+            <heure>19:30:00</heure>
+            <prixSeance devise="TND">8.0</prixSeance>
+            <placesDisponibles>100</placesDisponibles>
+        </seance>
+    </seances>
+
+    <!-- ======================== RÉSERVATIONS ======================== -->
+    <reservations>
+        <reservation id="R1" clientRef="C1" seanceRef="SE1" statut="confirmee">
+            <dateReservation>2025-04-08</dateReservation>
+            <nombrePlaces>2</nombrePlaces>
+            <montantTotal devise="TND">30.0</montantTotal>
+            <methodePaiement>carte bancaire</methodePaiement>
+        </reservation>
+
+        <reservation id="R2" clientRef="C3" seanceRef="SE1" statut="confirmee">
+            <dateReservation>2025-04-09</dateReservation>
+            <nombrePlaces>3</nombrePlaces>
+            <montantTotal devise="TND">45.0</montantTotal>
+            <methodePaiement>espèces</methodePaiement>
+        </reservation>
+
+        <reservation id="R3" clientRef="C4" seanceRef="SE3" statut="confirmee">
+            <dateReservation>2025-04-07</dateReservation>
+            <nombrePlaces>1</nombrePlaces>
+            <montantTotal devise="TND">14.0</montantTotal>
+            <methodePaiement>carte bancaire</methodePaiement>
+        </reservation>
+
+        <reservation id="R4" clientRef="C2" seanceRef="SE4" statut="en_attente">
+            <dateReservation>2025-04-10</dateReservation>
+            <nombrePlaces>2</nombrePlaces>
+            <montantTotal devise="TND">40.0</montantTotal>
+            <methodePaiement>virement</methodePaiement>
+        </reservation>
+
+        <reservation id="R5" clientRef="C5" seanceRef="SE6" statut="confirmee">
+            <dateReservation>2025-04-11</dateReservation>
+            <nombrePlaces>4</nombrePlaces>
+            <montantTotal devise="TND">32.0</montantTotal>
+            <methodePaiement>mobile payment</methodePaiement>
+        </reservation>
+
+        <reservation id="R6" clientRef="C1" seanceRef="SE4" statut="annulee">
+            <dateReservation>2025-04-09</dateReservation>
+            <nombrePlaces>1</nombrePlaces>
+            <montantTotal devise="TND">20.0</montantTotal>
+            <methodePaiement>carte bancaire</methodePaiement>
+        </reservation>
+    </reservations>
+
+</cinema>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cinema ville="Sfax" pays="Tunisie" dateOuverture="2025-01-01">
+    <!-- ERREUR 1 : attribut "nom" manquant sur <cinema> -->
+
+    <films>
+        <!-- ERREURS 2, 3, 4 : duree invalide, note hors bornes, langue trop longue -->
+        <film id="F1" promotion="true" langue="ENG" duree="abc" note="15.0">
+            <titre>Film Invalide</titre>
+            <realisateur nationalite="US">Réalisateur Test</realisateur>
+            <genre>Action</genre>
+            <annee>2023</annee>
+            <prix devise="TND">10.0</prix>
+            <synopsis>Un film conçu pour échouer à la validation.</synopsis>
+            <acteurs>
+                <acteur role="Héros" nationalite="US">Acteur Test</acteur>
+            </acteurs>
+        </film>
+    </films>
+
+    <salles>
+        <!-- ERREUR 5 : type "Plein Air" non autorisé par l'énumération -->
+        <salle id="S1" type="Plein Air" climatisee="false">
+            <nomSalle>Salle Erreur</nomSalle>
+            <capacite>100</capacite>
+            <equipements>
+                <equipement>Projecteur basique</equipement>
+            </equipements>
+        </salle>
+    </salles>
+
+    <clients>
+        <!-- ERREURS 6, 7 : élément <prenom> manquant, typeAbonnement invalide -->
+        <client id="C1" actif="true" typeAbonnement="Gold" dateInscription="2024-01-01">
+            <nom>Test</nom>
+            <!-- <prenom> est manquant ici -->
+            <email>test@example.com</email>
+            <telephone>+216 00 000 000</telephone>
+            <adresse ville="Sfax" codePostal="3000">Adresse test</adresse>
+        </client>
+    </clients>
+
+    <seances>
+        <!-- ERREUR 8 : statut "en_cours" n'est pas dans l'énumération -->
+        <seance id="SE1" filmRef="F1" salleRef="S1" statut="en_cours">
+            <date>2025-04-10</date>
+            <heure>20:00</heure>
+            <prixSeance devise="TND">10.0</prixSeance>
+            <placesDisponibles>50</placesDisponibles>
+        </seance>
+    </seances>
+
+    <!-- ERREUR 9 : l'élément <reservations> est complètement absent alors qu'il est obligatoire -->
+
+</cinema>
